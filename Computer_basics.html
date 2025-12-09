@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أساسيات الحاسوب | MY WEBSITE</title>
+    <link rel="icon" href="icons mohamed.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+        }
+        
+        body { 
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); 
+            color: #fff; 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+            position: relative; 
+        }
+        
+        body::before { 
+            content: ""; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: radial-gradient(circle at 10% 20%, rgba(67, 97, 238, 0.1) 0%, transparent 20%), 
+                        radial-gradient(circle at 90% 80%, rgba(247, 37, 133, 0.1) 0%, transparent 20%); 
+            z-index: -1; 
+        }
+
+        /* شريط التنقل */
+        .nav-container { 
+            background: rgba(22, 1, 1, 0.95); 
+            padding: 15px 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000; 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        
+        .nav-content { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 20px; 
+        }
+        
+        .nav-logo { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            background: linear-gradient(45deg, #4361ee, #3a0ca3); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            text-decoration: none; 
+        }
+        
+        .nav-links { 
+            display: flex; 
+            gap: 25px; 
+        }
+        
+        .nav-link { 
+            color: #e0e1dd; 
+            text-decoration: none; 
+            font-weight: 500; 
+            padding: 8px 15px; 
+            border-radius: 5px; 
+            transition: all 0.3s ease; 
+        }
+        
+        .nav-link:hover, .nav-link.active { 
+            background: rgba(67, 97, 238, 0.2); 
+            color: #4cc9f0; 
+        }
+
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            margin-top: 80px;
+        }
+        
+        header { 
+            text-align: center; 
+            padding: 30px 0; 
+            margin-bottom: 30px; 
+            animation: fadeIn 1s ease; 
+        }
+        
+        .logo { 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 10px; 
+            background: linear-gradient(45deg, #4361ee, #3a0ca3); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            display: inline-block; 
+        }
+        
+        .subtitle { 
+            font-size: 1.2rem; 
+            max-width: 800px; 
+            margin: 0 auto 20px; 
+            line-height: 1.6; 
+            color: #e0e1dd; 
+        }
+
+        /* محتوى الدورة */
+        .course-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            background: rgba(27, 38, 59, 0.85);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            min-height: 100vh;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar { 
+            background: linear-gradient(135deg, #4361ee 0%, #3a0ca3 100%);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 15px 0 0 15px;
+        }
+
+        .main-content { 
+            padding: 30px; 
+        }
+
+        .course-title {
+            text-align: center;
+            color: #4cc9f0;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .progress-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 20px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            background: linear-gradient(90deg, #4caf50, #2e7d32);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .lesson-nav {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .lesson-nav li {
+            margin: 10px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .lesson-nav li:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        .lesson-nav li.active {
+            background: rgba(255, 255, 255, 0.3);
+            border-right: 4px solid #ffd700;
+        }
+
+        .lesson-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .lesson-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .keyboard-shortcut {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .keyboard-shortcut:hover {
+            transform: translateY(-3px);
+        }
+
+        .shortcut-key {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .exercise-box {
+            background: rgba(76, 175, 80, 0.1);
+            border-right: 5px solid #4caf50;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .tip-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-right: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+
+        .video-link {
+            background: rgba(244, 67, 54, 0.1);
+            border-right: 5px solid #f44336;
+            padding: 15px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+
+        .video-link a {
+            color: #4cc9f0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .video-link a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .lesson-header {
+            background: linear-gradient(135deg, #4361ee, #3a0ca3);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .shortcuts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .download-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .download-btn {
+            background: linear-gradient(45deg, #4361ee, #3a0ca3);
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(67, 97, 238, 0.4);
+        }
+
+        .back-to-main {
+            background: linear-gradient(45deg, #4caf50, #2e7d32) !important;
+        }
+
+        footer { 
+            text-align: center; 
+            padding: 30px 0; 
+            margin-top: 40px; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+        }
+        
+        .social-icons { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; 
+            margin: 20px 0; 
+        }
+        
+        .social-icon { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%; 
+            background: rgba(255, 255, 255, 0.1); 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 1.5rem; 
+            transition: all 0.3s ease; 
+            text-decoration: none; 
+            color: #fff; 
+        }
+        
+        .social-icon:hover { 
+            background: #4361ee; 
+            transform: translateY(-5px); 
+            color: #fff; 
+        }
+        
+        .copyright { 
+            color: #e0e1dd; 
+            font-size: 0.9rem; 
+        }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; } 
+            to { opacity: 1; } 
+        }
+
+        /* استجابة الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .nav-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                border-radius: 15px 15px 0 0;
+            }
+
+            .shortcuts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .lesson-nav li {
+                padding: 12px;
+            }
+            
+            .course-title {
+                font-size: 1.8em;
+            }
+        }
+
+        /* تحسينات إضافية للشاشات الصغيرة جداً */
+        @media (max-width: 480px) {
+            .nav-logo {
+                font-size: 1.4rem;
+            }
+            
+            .nav-link {
+                padding: 6px 10px;
+                font-size: 0.9rem;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .course-title {
+                font-size: 1.5em;
+            }
+            
+            .lesson-header {
+                padding: 15px;
+            }
+            
+            .keyboard-shortcut {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .shortcut-key {
+                min-width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <div class="nav-container">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">MY WEBSITE</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">الصفحة الرئيسية</a>
+                <a href="Microsoft_Office.html" class="nav-link">Microsoft Office</a>
+                <a href="Computer_basics.html" class="nav-link active">أساسيات الحاسوب</a>
+                <a href="#contact" class="nav-link">اتصل بنا</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="logo">أساسيات الحاسوب</div>
+            <h1>دورة شاملة لتعلم أساسيات الحاسوب والكتابة السريعة</h1>
+            <p class="subtitle">مسار تعليمي متكامل يبدأ من الصفر حتى إتقان استخدام الحاسوب والإنترنت باحترافية.</p>
+        </header>
+
+        <div class="course-container">
+            <aside class="sidebar">
+                <h2>دورة أساسيات الحاسوب</h2>
+                
+                <div class="progress-container">
+                    <p style="text-align: center; margin: 10px 0">التقدم: <span id="progressText">0%</span></p>
+                    <div class="progress-bar">
+                        <div class="progress" id="courseProgress"></div>
+                    </div>
+                </div>
+
+                <ul class="lesson-nav">
+                    <li class="active" onclick="showLesson(1, this)">
+                        <i class="bi bi-play-circle"></i>
+                        <span>الدرس 1: مقدمة في الحاسوب</span>
+                    </li>
+                    <li onclick="showLesson(2, this)">
+                        <i class="bi bi-windows"></i>
+                        <span>الدرس 2: نظام ويندوز</span>
+                    </li>
+                    <li onclick="showLesson(3, this)">
+                        <i class="bi bi-folder"></i>
+                        <span>الدرس 3: إدارة الملفات</span>
+                    </li>
+                    <li onclick="showLesson(4, this)">
+                        <i class="bi bi-globe"></i>
+                        <span>الدرس 4: الإنترنت والمتصفحات</span>
+                    </li>
+                    <li onclick="showLesson(5, this)">
+                        <i class="bi bi-keyboard"></i>
+                        <span>الدرس 5: الكتابة السريعة</span>
+                    </li>
+                    <li onclick="showLesson(6, this)">
+                        <i class="bi bi-check-circle"></i>
+                        <span>الدرس 6: التطبيق العملي</span>
+                    </li>
+                </ul>
+            </aside>
+
+            <main class="main-content">
+                <h1 class="course-title">دورة أساسيات الحاسوب للمبتدئين</h1>
+
+                <!-- الدرس الأول -->
+                <div class="lesson-content active" id="lesson-1">
+                    <div class="lesson-header">
+                        <h2><i class="bi bi-play-circle"></i> الدرس الأول: مقدمة في الحاسوب والكيبورد</h2>
+                        <p>تعرف على أساسيات الحاسوب وأهم اختصارات الكيبورد للبدء</p>
+                    </div>
+
+                    <h3>📖 نظرة عامة</h3>
+                    <p>
+                        في هذا الدرس سنتعلم الأساسيات الأولى للتعامل مع الحاسوب، بدءاً من فهم مكونات الكمبيوتر الأساسية وصولاً إلى
+                        إتقان أول اختصارات الكيبورد المهمة.
+                    </p>
+
+                    <h3>🔧 مكونات الحاسوب الأساسية</h3>
+                    <ul>
+                        <li><strong>وحدة المعالجة المركزية (CPU):</strong> عقل الكمبيوتر الذي يعالج جميع العمليات</li>
+                        <li><strong>الذاكرة العشوائية (RAM):</strong> مساحة العمل المؤقتة للبرامج</li>
+                        <li><strong>القرص الصلب:</strong> مكان تخزين الملفات والبرامج</li>
+                        <li><strong>الشاشة:</strong> لعرض المعلومات والتفاعل</li>
+                        <li><strong>لوحة المفاتيح والفأرة:</strong> أدوات الإدخال الأساسية</li>
+                    </ul>
+
+                    <h3>⌨️ اختصارات الكيبورد الأساسية</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + C</span>
+                            <span>نسخ النص أو الملف المحدد</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + V</span>
+                            <span>لصق النص أو الملف المنسوخ</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + X</span>
+                            <span>قص النص أو الملف المحدد</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Z</span>
+                            <span>التراجع عن آخر عملية</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Y</span>
+                            <span>إعادة آخر عملية تم التراجع عنها</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + A</span>
+                            <span>تحديد الكل</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + S</span>
+                            <span>حفظ الملف الحالي</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + P</span>
+                            <span>طباعة الصفحة أو الملف</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + F</span>
+                            <span>فتح مربع البحث داخل الصفحة</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4><i class="bi bi-pencil-square"></i> تمرين عملي</h4>
+                        <ol>
+                            <li>افتح برنامج المفكرة (Notepad)</li>
+                            <li>اكتب جملة: "مرحباً بكم في دورة أساسيات الحاسوب"</li>
+                            <li>حدد النص بالكامل باستخدام Ctrl+A</li>
+                            <li>استخدم Ctrl+C لنسخه</li>
+                            <li>اضغط Enter للانتقال لسطر جديد</li>
+                            <li>استخدم Ctrl+V للصق النص</li>
+                            <li>استخدم Ctrl+S لحفظ الملف</li>
+                            <li>جرب Ctrl+Z للتراجع عن آخر عملية</li>
+                        </ol>
+                    </div>
+
+                    <div class="tip-box">
+                        <h4><i class="bi bi-lightbulb"></i> نصيحة مهمة</h4>
+                        <p>تدرب على هذه الاختصارات يومياً لمدة 10 دقائق. ستلاحظ تحسناً كبيراً في سرعة عملك خلال أسبوع واحد فقط!</p>
+                    </div>
+                </div>
+
+                <!-- الدرس الثاني -->
+                <div class="lesson-content" id="lesson-2">
+                    <div class="lesson-header">
+                        <h2><i class="bi bi-windows"></i> الدرس الثاني: نظام التشغيل ويندوز</h2>
+                        <p>تعلم أساسيات التعامل مع ويندوز واختصاراته المهمة</p>
+                    </div>
+
+                    <h3>📖 مقدمة عن نظام ويندوز</h3>
+                    <p>
+                        نظام التشغيل ويندوز هو الواجهة الرئيسية بينك وبين الكمبيوتر. يتيح لك تشغيل البرامج، إدارة الملفات، والتحكم
+                        في جميع مكونات الجهاز.
+                    </p>
+
+                    <h3>🖥️ عناصر سطح المكتب</h3>
+                    <ul>
+                        <li><strong>سطح المكتب:</strong> المساحة الرئيسية التي تظهر عند تشغيل الكمبيوتر</li>
+                        <li><strong>شريط المهام:</strong> الشريط السفلي الذي يحتوي على قائمة ابدأ والبرامج المفتوحة</li>
+                        <li><strong>قائمة ابدأ:</strong> نقطة الوصول الرئيسية لجميع البرامج والإعدادات</li>
+                        <li><strong>منطقة الإشعارات:</strong> المنطقة اليمنى من شريط المهام</li>
+                    </ul>
+
+                    <h3>⌨️ اختصارات ويندوز الأساسية</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win</span>
+                            <span>فتح قائمة ابدأ</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + E</span>
+                            <span>فتح "مستكشف الملفات"</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + D</span>
+                            <span>إظهار سطح المكتب</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + L</span>
+                            <span>قفل الكمبيوتر</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Alt + Tab</span>
+                            <span>التبديل بين النوافذ المفتوحة</span>
+                        </div>
+                    </div>
+
+                    <h3>🔧 اختصارات إدارة النوافذ</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + ↑</span>
+                            <span>تكبير النافذة (كامل الشاشة)</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + ↓</span>
+                            <span>تصغير النافذة</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + ←</span>
+                            <span>تثبيت النافذة يساراً</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + →</span>
+                            <span>تثبيت النافذة يميناً</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4><i class="bi bi-pencil-square"></i> تمرين عملي</h4>
+                        <ol>
+                            <li>استخدم Win لفتح قائمة ابدأ</li>
+                            <li>اكتب "notepad" واضغط Enter لفتح المفكرة</li>
+                            <li>استخدم Win + E لفتح مستكشف الملفات</li>
+                            <li>استخدم Alt + Tab للتنقل بين النافذتين</li>
+                            <li>جرب Win + ← و Win + → لتنظيم النوافذ</li>
+                            <li>استخدم Win + D لإظهار سطح المكتب</li>
+                            <li>جرب Win + L لقفل الكمبيوتر</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- الدرس الثالث -->
+                <div class="lesson-content" id="lesson-3">
+                    <div class="lesson-header">
+                        <h2><i class="bi bi-folder"></i> الدرس الثالث: إدارة الملفات والمجلدات</h2>
+                        <p>تعلم كيفية تنظيم وإدارة ملفاتك بكفاءة</p>
+                    </div>
+
+                    <h3>📖 أساسيات الملفات والمجلدات</h3>
+                    <p>
+                        الملفات والمجلدات هي الطريقة التي ينظم بها الكمبيوتر المعلومات. فهم كيفية إدارتها أمر أساسي لاستخدام
+                        الكمبيوتر بفعالية.
+                    </p>
+
+                    <h3>📂 أنواع الملفات الشائعة</h3>
+                    <ul>
+                        <li><strong>.txt:</strong> ملفات نصية بسيطة</li>
+                        <li><strong>.docx:</strong> مستندات مايكروسوفت وورد</li>
+                        <li><strong>.pdf:</strong> ملفات PDF</li>
+                        <li><strong>.jpg, .png:</strong> ملفات الصور</li>
+                        <li><strong>.mp3, .mp4:</strong> ملفات الصوت والفيديو</li>
+                        <li><strong>.zip:</strong> ملفات مضغوطة</li>
+                    </ul>
+
+                    <h3>⌨️ اختصارات إدارة الملفات</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + A</span>
+                            <span>تحديد جميع الملفات</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Delete</span>
+                            <span>حذف الملف إلى سلة المحذوفات</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Shift + Delete</span>
+                            <span>حذف نهائي للملف</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">F2</span>
+                            <span>إعادة تسمية الملف</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Shift + N</span>
+                            <span>إنشاء مجلد جديد</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4><i class="bi bi-pencil-square"></i> تمرين عملي</h4>
+                        <ol>
+                            <li>افتح مستكشف الملفات بـ Win + E</li>
+                            <li>انتقل إلى مجلد المستندات</li>
+                            <li>أنشئ مجلداً جديداً باستخدام Ctrl + Shift + N</li>
+                            <li>اسمه "تمارين الدورة" باستخدام F2</li>
+                            <li>أنشئ ملف نصي داخل المجلد</li>
+                            <li>جرب تحديد عدة ملفات باستخدام Ctrl + Click</li>
+                            <li>استخدم Delete لحذف ملف تجريبي</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- الدرس الرابع -->
+                <div class="lesson-content" id="lesson-4">
+                    <div class="lesson-header">
+                        <h2><i class="bi bi-globe"></i> الدرس الرابع: أساسيات الإنترنت والمتصفحات</h2>
+                        <p>تعلم كيفية التصفح الآمن والفعال على الإنترنت</p>
+                    </div>
+
+                    <h3>📖 مقدمة عن الإنترنت</h3>
+                    <p>
+                        الإنترنت شبكة عالمية تربط مليارات الأجهزة حول العالم. المتصفح هو برنامجك للوصول إلى هذه الشبكة الهائلة من
+                        المعلومات.
+                    </p>
+
+                    <h3>🌐 المتصفحات الشائعة</h3>
+                    <ul>
+                        <li><strong>Google Chrome:</strong> الأكثر استخداماً وسرعة</li>
+                        <li><strong>Mozilla Firefox:</strong> يركز على الخصوصية</li>
+                        <li><strong>Microsoft Edge:</strong> المتصفح الافتراضي لويندوز</li>
+                        <li><strong>Safari:</strong> متصفح أبل للماك</li>
+                    </ul>
+
+                    <h3>⌨️ اختصارات التصفح الأساسية</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + T</span>
+                            <span>فتح تبويب جديد</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + W</span>
+                            <span>إغلاق التبويب الحالي</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Shift + T</span>
+                            <span>إعادة فتح آخر تبويب أُغلق</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + R</span>
+                            <span>إعادة تحميل الصفحة</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">F5</span>
+                            <span>إعادة تحميل الصفحة</span>
+                        </div>
+                    </div>
+
+                    <h3>🔄 اختصارات التنقل</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Tab</span>
+                            <span>الانتقال إلى التبويب التالي</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Shift + Tab</span>
+                            <span>الانتقال إلى التبويب السابق</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + 1-9</span>
+                            <span>الانتقال لتبويب محدد</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4><i class="bi bi-pencil-square"></i> تمرين عملي</h4>
+                        <ol>
+                            <li>افتح متصفح الإنترنت</li>
+                            <li>استخدم Ctrl + T لفتح 3 تبويبات جديدة</li>
+                            <li>اذهب إلى مواقع مختلفة في كل تبويب</li>
+                            <li>استخدم Ctrl + Tab للتنقل بين التبويبات</li>
+                            <li>أغلق أحد التبويبات بـ Ctrl + W</li>
+                            <li>أعد فتحه بـ Ctrl + Shift + T</li>
+                            <li>جرب Ctrl + 2 للانتقال للتبويب الثاني</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- الدرس الخامس -->
+                <div class="lesson-content" id="lesson-5">
+                    <div class="lesson-header">
+                        <h2><i class="bi bi-keyboard"></i> الدرس الخامس: الكتابة السريعة والاختصارات المتقدمة</h2>
+                        <p>اتقن فن الكتابة السريعة والاختصارات المتقدمة</p>
+                    </div>
+
+                    <h3>📖 أساسيات الكتابة السريعة</h3>
+                    <p>
+                        الكتابة السريعة (Touch Typing) هي مهارة أساسية في العصر الرقمي. تعلم وضع أصابعك الصحيح وحفظ مواقع الأحرف
+                        سيزيد من سرعتك بشكل كبير.
+                    </p>
+
+                    <h3>✋ وضعية الأصابع الصحيحة</h3>
+                    <ul>
+                        <li><strong>اليد اليسرى:</strong> الخنصر على A، البنصر على S، الوسطى على D، السبابة على F</li>
+                        <li><strong>اليد اليمنى:</strong> السبابة على J، الوسطى على K، البنصر على L، الخنصر على ;</li>
+                        <li><strong>الإبهامان:</strong> على مفتاح المسافة</li>
+                        <li><strong>المفاتيح المرجعية:</strong> F و J لهما نتوءات صغيرة لتساعدك في تحديد الموقع</li>
+                    </ul>
+
+                    <h3>📝 اختصارات البرامج المكتبية</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + B</span>
+                            <span>تفعيل/تعطيل الخط العريض (Bold)</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + I</span>
+                            <span>تفعيل/تعطيل الخط المائل (Italic)</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + U</span>
+                            <span>تفعيل/تعطيل الخط المسطر (Underline)</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Shift + ></span>
+                            <span>زيادة حجم الخط</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Shift + <</span>
+                            <span>تقليل حجم الخط</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4><i class="bi bi-pencil-square"></i> تمرين عملي للكتابة السريعة</h4>
+                        <ol>
+                            <li>افتح برنامج الوورد أو المفكرة</li>
+                            <li>ضع أصابعك على المفاتيح المرجعية (F و J)</li>
+                            <li>اكتب الجملة التالية 10 مرات: "تعلم الكتابة السريعة مهارة مهمة"</li>
+                            <li>استخدم Ctrl + B لجعل النص عريضاً</li>
+                            <li>استخدم Ctrl + I لجعل النص مائلاً</li>
+                            <li>استخدم Ctrl + U لتسطير النص</li>
+                            <li>جرب تغيير حجم الخط باستخدام Ctrl + Shift + > و <</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- الدرس السادس -->
+                <div class="lesson-content" id="lesson-6">
+                    <div class="lesson-header">
+                        <h2><i class="bi bi-check-circle"></i> الدرس السادس: التطبيق العملي والمراجعة</h2>
+                        <p>مراجعة شاملة وتطبيق عملي لكل ما تعلمته</p>
+                    </div>
+
+                    <h3>📖 مراجعة سريعة</h3>
+                    <p>في هذا الدرس الأخير، سنراجع جميع المهارات والاختصارات التي تعلمناها ونطبقها في مشروع عملي شامل.</p>
+
+                    <h3>🎯 أهم الاختصارات التي يجب حفظها</h3>
+                    <div class="shortcuts-grid">
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + C/V/X</span>
+                            <span>نسخ/لصق/قص - الأساسيات</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + Z/Y</span>
+                            <span>تراجع/إعادة</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + S</span>
+                            <span>حفظ - أهم اختصار!</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Win + E</span>
+                            <span>مستكشف الملفات</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Alt + Tab</span>
+                            <span>التنقل بين البرامج</span>
+                        </div>
+                        <div class="keyboard-shortcut">
+                            <span class="shortcut-key">Ctrl + F</span>
+                            <span>البحث (في أي برنامج)</span>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4><i class="bi bi-pencil-square"></i> مشروع عملي شامل</h4>
+                        <p><strong>مشروع: إنشاء نظام ملفات شخصي منظم</strong></p>
+                        <ol>
+                            <li>استخدم Win + E لفتح مستكشف الملفات</li>
+                            <li>أنشئ مجلد "حياتي الرقمية" باستخدام Ctrl + Shift + N</li>
+                            <li>داخله أنشئ المجلدات: "العمل"، "الشخصي"، "التعليم"</li>
+                            <li>في كل مجلد، أنشئ ملف نصي يوضح الغرض منه</li>
+                            <li>استخدم F2 لإعادة تسمية الملفات بأسماء واضحة</li>
+                            <li>افتح متصفح الإنترنت وابحث عن معلومات مفيدة</li>
+                            <li>احفظ المعلومات في المجلد المناسب</li>
+                            <li>استخدم Ctrl + S لحفظ جميع الملفات</li>
+                        </ol>
+                    </div>
+
+                    <div style="
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: white;
+                        padding: 30px;
+                        border-radius: 15px;
+                        text-align: center;
+                        margin: 30px 0;
+                    ">
+                        <h3><i class="bi bi-trophy"></i> تهانينا!</h3>
+                        <p style="font-size: 1.2em; margin: 15px 0">لقد أكملت دورة أساسيات الحاسوب بنجاح!</p>
+                        <p>أصبحت الآن تمتلك المهارات الأساسية للتعامل مع الكمبيوتر بكفاءة. استمر في التدريب والتطوير!</p>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div class="download-buttons">
+            <a href="index.html" class="download-btn back-to-main">
+                <i class="fas fa-arrow-left"></i> العودة للصفحة الرئيسية
+            </a>
+            <a href="#" class="download-btn">
+                <i class="fas fa-file-pdf"></i> تحميل دورة الحاسوب (PDF)
+            </a>
+            <a href="#" class="download-btn">
+                <i class="fas fa-calendar-alt"></i> جدول التعلم اليومي
+            </a>
+            <a href="https://github.com/muham-ed/skills-github-pages" class="download-btn" target="_blank">
+                <i class="fab fa-github"></i> مشروع GitHub
+            </a>
+            <a href="https://www.youtube.com/channel/UCS5vFLuP5h1NTgvHiM2oJHQ" class="download-btn" target="_blank">
+                <i class="fab fa-youtube"></i> قناتي على YouTube
+            </a>
+            <a href="https://wa.me/201060828627" class="download-btn" target="_blank" style="background: linear-gradient(45deg, #25D366, #128C7E);">
+                <i class="fab fa-whatsapp"></i> التواصل عبر واتساب
+            </a>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/mohamed-ala-a-2b333533a" class="social-icon" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/muham-ed/skills-github-pages" class="social-icon" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/UCS5vFLuP5h1NTgvHiM2oJHQ" class="social-icon" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.instagram.com/mohamedabotasa/" class="social-icon" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61550839582471&locale=ar_AR" class="social-icon" target="_blank">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://wa.me/201060828627" class="social-icon" target="_blank" style="background: linear-gradient(45deg, #25D366, #128C7E);">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:mohamedalaaaldinabotasa@gmail.com" class="social-icon">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+        <p class="copyright">© 2025 MY WEBSITE | تم التصميم بواسطة Mohamed Alaa</p>
+    </footer>
+
+    <script>
+        let currentLesson = 1;
+        const totalLessons = 6;
+
+        function showLesson(lessonNumber, element) {
+            // إخفاء جميع الدروس
+            const allLessons = document.querySelectorAll('.lesson-content');
+            allLessons.forEach((lesson) => {
+                lesson.classList.remove('active');
+            });
+
+            // إزالة الكلاس النشط من جميع العناصر
+            const allNavItems = document.querySelectorAll('.lesson-nav li');
+            allNavItems.forEach((item) => {
+                item.classList.remove('active');
+            });
+
+            // إظهار الدرس المحدد
+            const targetLesson = document.getElementById(`lesson-${lessonNumber}`);
+            if (targetLesson) {
+                targetLesson.classList.add('active');
+            }
+            
+            // تفعيل العنصر في القائمة
+            if (element) {
+                element.classList.add('active');
+            }
+
+            // تحديث شريط التقدم
+            currentLesson = lessonNumber;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const progress = (currentLesson / totalLessons) * 100;
+            const progressElement = document.getElementById('courseProgress');
+            const progressTextElement = document.getElementById('progressText');
+            
+            if (progressElement && progressTextElement) {
+                progressElement.style.width = progress + '%';
+                progressTextElement.textContent = Math.round(progress) + '%';
+            }
+        }
+
+        // تحديث التقدم عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            
+            // إضافة تأثيرات للعناصر عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // تطبيق تأثيرات الظهور على البطاقات
+            const keyboardShortcuts = document.querySelectorAll('.keyboard-shortcut');
+            keyboardShortcuts.forEach(shortcut => {
+                shortcut.style.opacity = '0';
+                shortcut.style.transform = 'translateY(20px)';
+                shortcut.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(shortcut);
+            });
+        });
+    </script>
+</body>
+</html>
